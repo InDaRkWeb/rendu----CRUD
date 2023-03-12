@@ -1,0 +1,26 @@
+* {
+  font-family: "poppins", sans-serif;
+  background-color: rgb(53, 53, 53);
+  color: aliceblue;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #4caf50;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}

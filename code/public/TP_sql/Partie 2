@@ -1,0 +1,17 @@
+// exo 1 : select distinct id_etudiant from examens;
+
+//exo 2 : select count(distinct id_etudiant) as sommes from examens;
+
+//exo 3 : select avg(note) from examens where id_examen = 45;
+
+//exo 4 : select max(note) from examens where id_examen = 87;
+
+//exo 5 : select distinct id_etudiant from examens where (id_examen = 45 and note > 11) or (id_examen = 87 and note > 12);
+
+//exo 6 : select ex.*, et.prenom, et.nom from examens ex left JOIN etudiants et ON ex.id_etudiant = et.id_etudiant;
+
+//exo 7 : select ex.*, et.prenom, et.nom from examens ex inner JOIN etudiants et ON ex.id_etudiant = et.id_etudiant;
+
+//exo 8 : select ex.id_etudiant, et.prenom, et.nom, avg(note) as moyenne from examens ex inner JOIN etudiants et ON ex.id_etudiant = et.id_etudiant where et.id_etudiant = 30;
+
+//exo 9 : select ex.id_examen, ex.matiere, et.prenom, et.nom, ex.note from examens ex inner JOIN etudiants et ON ex.id_etudiant = et.id_etudiant order by note desc limit 3;

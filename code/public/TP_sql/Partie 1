@@ -1,0 +1,15 @@
+// exo 1 : select * from livres;
+
+// exo 2 : select * from livres where prix > 20;
+
+// exo 3 : select * from livres order by prix desc;
+
+// exo 4 : select max(prix) as prix from livres;
+
+// exo 5 : select * from livres where prix between 20 and 22;
+
+//exo 6 : select * from livres WHERE isbn_10 != 2092589547;
+
+//exo 7 : select min(prix) as minus from livres;
+
+//exo 8 : SELECT * FROM livres limit 3 offset 1; ou select * from livres WHERE id_livre between 2 and 4;

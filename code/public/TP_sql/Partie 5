@@ -1,0 +1,25 @@
+// exo 1 : select * from covid where jour = '2021-04-01';
+
+// exo 2 : select cv.*, re.name as regions from covid cv inner join regions re on cv.id_region = re.code where jour = '2021-04-01';
+
+// exo 3 : select sum(n_cum_dose1) as nombre_au_cumulé_de_vaccination_première_dose from covid where jour like '2020-%' ;
+//         select sum(n_cum_dose2) as nombre_au_cumulé_de_vaccination_première_dose from covid where jour like '2020-%' ;
+
+// exo 4 : select sum(n_cum_dose1) as nombre_au_cumulé_de_vaccination_première_dose from covid where id_region = 93 and jour like '2021-03-%' ;
+
+// exo 5 : select sum(n_cum_dose2) as nombre_au_cumulé_de_vaccination_deuxième_dose from covid where id_region = 11 and jour like '2021-03-%' ;
+
+// exo 6 : select cv.n_dose1 as max_dose_1, re.name, cv.jour from covid cv left join regions re on cv.id_region = re.code where n_dose1 = (select max(n_dose1) from covid);
+
+// exo 7 : select cv.n_dose2 as max_dose_2, re.name, cv.jour from covid cv left join regions re on cv.id_region = re.code where n_dose2 = (select max(n_dose2) from covid);
+
+// exo 8 : select cv.couv_dose1 as maxcouv_dose_1, re.name from covid cv left join regions re on cv.id_region = re.code where couv_dose1 = (select max(couv_dose1) from covid);
+//         select cv.couv_dose2 as maxcouv_dose_2, re.name from covid cv left join regions re on cv.id_region = re.code where couv_dose2 = (select max(couv_dose2) from covid);
+
+// exo 9 : select distinct cv.couv_dose1 as mincouv_dose_1, re.name from covid cv inner join regions re on cv.id_region = re.code where couv_dose1 = (select min(couv_dose1) from covid);
+
+// exo 10 : select avg(cv.couv_dose1) as couverture_dose1_avg from covid cv inner join regions re on cv.id_region = re.code where jour = '2021-04-06';
+//          select avg(cv.couv_dose2) as couverture_dose2_avg from covid cv inner join regions re on cv.id_region = re.code where jour = '2021-04-06';
+
+// exo 11 : select distinct cv.couv_dose1 as couverture_dose1_avg, re.name from covid cv inner join regions re on cv.id_region = re.code where cv.couv_dose1 > '15%';
+//          select distinct cv.couv_dose2 as couverture_dose2_avg, re.name from covid cv inner join regions re on cv.id_region = re.code where cv.couv_dose2 < '5%';

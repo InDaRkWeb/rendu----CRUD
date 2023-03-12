@@ -1,0 +1,19 @@
+// exo 1 : select * from covid_vaccin where jour = '2021-02-14' and dep_code = 77;
+
+//exo 2 : select n_cum_dose1, n_cum_dose2 from covid_vaccin where jour = '2021-02-14' and dep_code in (91, 77);
+
+// exo 3 : select sum(n_dose1) from covid_vaccin where vaccin = 3 and jour like '2021-02-%' and dep_code = 77;
+
+// exo 4 : select sum(n_dose2) from covid_vaccin where vaccin in (2, 3) and jour like '2021-03-%' and dep_code = 77;
+
+// exo 5 : select cv.*, cvt.nom from covid_vaccin cv left join covid_vaccin_type cvt on cv.vaccin = cvt.id where n_dose1 = (select max(n_dose1) from covid_vaccin where vaccin in (1, 2, 3));
+
+// exo 6 : select cv.*, cvt.nom, dp.name from covid_vaccin cv left join covid_vaccin_type cvt on cv.vaccin = cvt.id left join departments dp on cv.dep_code = dp.code where n_dose2 = (select max(n_dose2) from covid_vaccin where vaccin in (1, 2, 3));
+
+// exo 7 : select cvt.nom, cv.jour, dp.name, dp.code, cv.n_cum_dose1 from covid_vaccin cv left join covid_vaccin_type cvt on cv.vaccin = cvt.id left join departments dp on cv.dep_code = dp.code where n_dose1 = (select max(n_dose1) from covid_vaccin where vaccin = 3);
+
+// exo 8 : select cvt.nom, cv.jour, dp.name, dp.code, cv.n_cum_dose1 from covid_vaccin cv left join covid_vaccin_type cvt on cv.vaccin = cvt.id left join departments dp on cv.dep_code = dp.code where vaccin = 1 and n_dose1 = (select min(n_dose1) from covid_vaccin);
+
+// exo 9 : select avg(n_dose1) as avg_moderna from covid_vaccin where vaccin = 2;
+
+// exo 10 : select dp.code, dp.name, cvt.nom, cv.n_cum_dose1, cv.n_cum_dose2 from covid_vaccin cv left join covid_vaccin_type cvt on cv.vaccin = cvt.id left join departments dp on cv.dep_code = dp.code where (cv.n_cum_dose2 > 9000 and vaccin = 2) or (cv.n_cum_dose1 > 120000 and vaccin = 1);

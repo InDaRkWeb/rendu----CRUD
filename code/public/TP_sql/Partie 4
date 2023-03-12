@@ -1,0 +1,19 @@
+// exo 1 : select name as ville from cities where gps_lat = 48.66913724637683 and gps_lng = 1.87586057971015;
+
+// exo 2 : select count(name) as total_ville from cities where department_code = 91;
+
+// exo 3 : select count(name) as total_ville from cities where name like "%-le-Roi";
+
+// exo 4 : select count(zip_code) as n_cities from cities where zip_code = 77320;
+
+// exo 5 : select count(name) as total_villes from cities where department_code = 77 and name LIKE 'SAINT-%';
+
+// exo 6 : select name as ville from cities where zip_code between 77210 and 77810;
+
+// exo 7 : select name as ville, zip_code from cities where department_code = 77 order by zip_code desc limit 2;
+
+// exo 8 : select name as ville, max(zip_code) from cities;
+
+// exo 9 : select name as departements, slug from departments where region_code in (75, 27, 53, 84, 93);
+
+// exo 10 : select re.name as regions, dp.name as departements, ct.name as villes from departments dp left join regions re on dp.region_code = re.code left join cities ct on dp.code = ct.department_code where dp.code = 77;

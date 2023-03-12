@@ -1,0 +1,50 @@
+services:
+  app:
+    image: ecv-php
+    build:
+      context: ./.docker/php
+      dockerfile: Dockerfile
+    container_name: ecv-php
+    volumes:
+      - ../code:/var/www/html
+    working_dir: /var/www/html
+    depends_on:
+      - db
+    environment:
+      - PHP_ERROR_LOG=php_errors.log
+    ports:
+      - "${EXPOSE_APP_PORT}:80"
+    networks:
+      - ecv
+
+  # Conteneur MariaDB
+  db:
+    image: mariadb:10.6
+    container_name: ecv-db
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
+      - MARIADB_DATABASE=${MARIADB_DATABASE}
+      - MARIADB_USER=${MARIADB_USER}
+      - MARIADB_PASSWORD=${MARIADB_PASSWORD}
+    ports:
+      - "${EXPOSE_DB_PORT}:3306"
+    networks:
+      - ecv
+
+  adminer:
+    image: adminer
+    container_name: ecv-adminer
+    environment:
+      - ADMINER_DEFAULT_SERVER=db
+    ports:
+      - "${EXPOSE_ADMINER_PORT}:8080"
+    networks:
+      - ecv
+
+volumes:
+  db_data:
+
+networks:
+  ecv:
