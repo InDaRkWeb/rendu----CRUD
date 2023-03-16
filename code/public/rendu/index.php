@@ -1,12 +1,14 @@
 <?php
+
 require_once 'fonction.ini.php';
 $connexion = connexion();
 
 if(isset($_POST['username']) && !empty($_POST['username'])) {
-    $result = $connexion->query('select * from users where username="'.$_POST['username'].'" and password="'.sha1($_POST['password']).'"');
+    $result = $connexion->query('select * from Users where username="'.$_POST['username'].'" and password="'.sha1($_POST['password']).'"');
 
     if($result->rowCount() >=1 ) {
-        //Todo: Faire le message de succès / Redirection
+        $_SESSION['connexion'] = 'Bienvenue '.$_POST['username'].' !';
+        header("Location: ./read.php"); 
     } else {
         $error = "Erreur dans la connexion, verifier votre username et mot de passe";
     }

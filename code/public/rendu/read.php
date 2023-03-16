@@ -1,63 +1,26 @@
 <?php
-include 'config.ini.php';
 
-// // Connexion à la base de données
-// $conn = mysqli_connect(HOTE, USERNAME, MDP, BASE);
+require_once 'fonction.ini.php';
 
-// // Vérifier la connexion
-// if (!$conn) {
-//     die("La connexion a échoué : " . mysqli_connect_error());
-// }
+$connexion = connexion();
 
-// // Préparation et exécution de la requête SQL
-// $sql = "SELECT * FROM Voitures";
-// $result = $conn->query($sql);
 
-// // Fermer la connexion
-// mysqli_close($conn);
+// On écrit notre requête
+$sql = 'SELECT * FROM `Voitures`';
 
+// On prépare la requête
+$query = $connexion->prepare($sql);
+
+// On exécute la requête
+$query->execute();
+
+// On stocke le résultat dans un tableau associatif
+$result = array();
+$result = $query->fetchAll(PDO::FETCH_ASSOC)
 
 //TODO : Faire la requete Select pour avoir les bonnes données
 //TODO : Faire le HTML avec  la boucle d'affichage des données
 
-?>
-
-<?php
-$conn = mysqli_connect(HOTE, USERNAME, MDP, BASE);
-
-// Vérification de la connexion
-if (!$conn) {
-    die("Connexion échouée: " . mysqli_connect_error());
-}
-
-// Récupération des données de la table
-$sql = "SELECT * FROM Voitures";
-$result = mysqli_query($conn, $sql);
-
-// Affichage des données dans un tableau HTML/CSS
-echo "<table>";
-echo "<thead>";
-echo "<tr>";
-// Boucle pour afficher les noms des colonnes
-while ($field = mysqli_fetch_field_direct($result, 0)) {
-    echo "<th>" . $field->name . "</th>";
-}
-echo "</tr>";
-echo "</thead>";
-echo "<tbody>";
-// Boucle pour afficher les données de chaque ligne
-while ($row = mysqli_fetch_assoc($result)) {
-    echo "<tr>";
-    foreach ($row as $value) {
-        echo "<td>" . $value . "</td>";
-    }
-    echo "</tr>";
-}
-echo "</tbody>";
-echo "</table>";
-
-// Fermeture de la connexion
-mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
@@ -70,6 +33,41 @@ mysqli_close($conn);
     <link rel="stylesheet" href="../rendu/style.css">
 </head>
 <body>
-    <h1>Je suis connecté !!!</h1>
+    <h1>Bienvenue sur la liste des voitures de mon garage !</h1>
+    <table class="tableau">
+        <thead>
+            <th>id</th>
+            <th>Pays</th>
+            <th>Marque</th>
+            <th>Models</th>
+            <th>Année</th>
+            <th>Puissance en ch</th>
+            <th>Couple en N.m</th>
+            <th>Type</th>
+            <th>Poids en kg</th>
+            <th></th>
+        </thead>
+        <tbody>
+        <?php
+            foreach($result as $Voitures){
+        ?>
+                <tr>
+                    <td class="id"><?= $Voitures['id'] ?></td>
+                    <td><?= $Voitures['Pays'] ?></td>
+                    <td><?= $Voitures['Marque'] ?></td>
+                    <td><?= $Voitures['Models'] ?></td>
+                    <td><?= $Voitures['Année'] ?></td>
+                    <td><?= $Voitures['Puissance_en_ch'] ?></td>
+                    <td><?= $Voitures['Couple'] ?></td>
+                    <td><?= $Voitures['Type'] ?></td>
+                    <td><?= $Voitures['Poids_en_kg'] ?></td>
+                    <td><a class="read" href="readMore.php?id=<?= $Voitures['id'] ?>">Voir</a>  <a class="Modif" href="update.php?id=<?= $Voitures['id'] ?>">Modifier</a>  <a class="Delete"href="delete.php?id=<?= $Voitures['id'] ?>">Supprimer</a></td>
+                </tr>
+        <?php
+            }
+        ?>
+        </tbody>
+    </table>
+    <a href="create.php" class="Add">Ajouter</a>
 </body>
 </html>
