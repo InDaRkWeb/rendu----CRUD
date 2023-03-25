@@ -1,4 +1,4 @@
-<?php
+<?php 
 require_once 'fonction.ini.php';
 
 $connexion = connexion();
@@ -16,10 +16,6 @@ $query->execute();
 // On stocke le résultat dans un tableau associatif
 $result = array();
 $result = $query->fetchAll(PDO::FETCH_ASSOC)
-
-//TODO : Faire la requete Select pour avoir les bonnes données
-//TODO : Faire le HTML avec  la boucle d'affichage des données
-
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +28,6 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC)
     <link rel="stylesheet" href="../rendu/style.css">
 </head>
 <body>
-    
     <h2>Bienvenue sur la liste des voitures de mon garage !</h2>
     <table class="tableau">
         <thead>
@@ -59,13 +54,12 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC)
                     <td><?= $Voitures['Puissance'] ?></td>
                     <td><?= $Voitures['Couple'] ?></td>
                     <td><?= $Voitures['Poids'] ?></td>
-                    <td><a class="read" href="more.php?id=<?= $Voitures['id'] ?>">Voir</a>  <a class="Modif" href="update.php?id=<?= $Voitures['id'] ?>">Modifier</a>   <a onclick="return confirm('Voulez-vous vraiment supprimer la <?php echo $Voitures['Marque'] ?> <?php echo $Voitures['Models'] ?> de <?php echo $Voitures['Annee'] ?> de mon garage ?')" class="btn-supprimer" href="delete.php?id=<?= $voiture['id'] ?>">Supprimer</a></td>
-                </tr>
+                    </tr>
         <?php
             }
-        ?>
-        </tbody>
+        ?> 
     </table>
-    <a href="create.php" class="Add">Ajouter</a>
+    <a class="btn-retour" href="read.php">Retour</a>
+    </main>
 </body>
 </html>
