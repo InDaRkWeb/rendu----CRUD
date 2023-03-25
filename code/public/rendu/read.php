@@ -33,7 +33,7 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC)
     <link rel="stylesheet" href="../rendu/style.css">
 </head>
 <body>
-    <h1>Bienvenue sur la liste des voitures de mon garage !</h1>
+    <h2>Bienvenue sur la liste des voitures de mon garage !</h2>
     <table class="tableau">
         <thead>
             <th>id</th>

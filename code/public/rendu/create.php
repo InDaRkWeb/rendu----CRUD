@@ -35,38 +35,38 @@ $_SESSION['erreur'] = '<span style="color: red;">'."Le formulaire est incomplet"
 </head>
 <body>
     <div class="row">
-            <section class="col-12">
-                <?php
-                    if(!empty($_SESSION['erreur'])){
-                        echo '<div class="alert alert-danger" role="alert">
-                                '. $_SESSION['erreur'].'
-                            </div>';
-                        $_SESSION['erreur'] = "";
-                    }
-                ?>
+        <section class="col-12" class="create">
+            <?php
+                if(!empty($_SESSION['erreur'])){
+                    echo '<div class="alert alert-danger" role="alert">
+                            '. $_SESSION['erreur'].'
+                        </div>';
+                    $_SESSION['erreur'] = "";
+                }
+            ?>
             <h2>Ajouter une voiture à mon garage</h2>
-                <form method="post" id="create_form">
-                    <label for="Pays">Pays</label>
-                    <input type="text" name="Pays" id="Pays"></br>
-                    <label for="Marque">Marque</label>
-                    <input type="text" name="Marque" id="Marque"></br>
-                    <label for="Models">Modèle</label>
-                    <input type="text" name="Models" id="Models"></br>
-                    <label for="Année">Année</label>
-                    <input type="number" name="Année" id="Année"></br>
-                    <label for="Puissance_en_ch">Puissance en ch</label>
-                    <input type="number" name="Puissance_en_ch" id="Puissance_en_ch"></br>
-                    <label for="Couple">Couple en N.m</label>
-                    <input type="number" name="Couple" id="Couple"></br>
-                    <label for="Type">Type</label>
-                    <input type="text" name="Type" id="Type"></br>
-                    <label for="Poids en kg">Poids en kg</label>
-                    <input type="number" name="Poids_en_kg" id="Poids_en_kg"></br>
-                    <button>Enregistrer</button>
-                    <p><a class="btn-retour" href="read.php">Retour</a></p>
-                </form>
-            </section>
-                </div>
+            <form method="post" id="create_form">
+                <label for="Pays">Pays</label>
+                <input type="text" name="Pays" id="Pays"></br>
+                <label for="Marque">Marque</label>
+                <input type="text" name="Marque" id="Marque"></br>
+                <label for="Models">Modèle</label>
+                <input type="text" name="Models" id="Models"></br>
+                <label for="Année">Année</label>
+                <input type="number" name="Année" id="Année"></br>
+                <label for="Puissance_en_ch">Puissance en ch</label>
+                <input type="number" name="Puissance_en_ch" id="Puissance_en_ch"></br>
+                <label for="Couple">Couple en N.m</label>
+                <input type="number" name="Couple" id="Couple"></br>
+                <label for="Type">Type</label>
+                <input type="text" name="Type" id="Type"></br>
+                <label for="Poids en kg">Poids en kg</label>
+                <input type="number" name="Poids_en_kg" id="Poids_en_kg"></br>
+                <button>Enregistrer</button><p><a class="btn-retour" href="read.php">Retour</a></p>
+                
+            </form>
+        </section>
+    </div>
 
 </body>
 </html>

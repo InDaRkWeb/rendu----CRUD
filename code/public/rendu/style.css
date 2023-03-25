@@ -1,10 +1,10 @@
 * {
   font-family: "poppins", sans-serif;
-  background-color: rgb(53, 53, 53);
+  background-color: #000814;
   color: aliceblue;
 }
 
-h1 {
+h2 {
   text-align: center;
 }
 
@@ -44,11 +44,8 @@ tr td a {
   border-radius: 4px;
 }
 
-td.id {
-  color: #fca311;
-}
-
-.Add {
+form p a,
+button {
   background-color: #fca311;
   border: none;
   color: black;
@@ -62,9 +59,22 @@ td.id {
   border-radius: 4px;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
+td.id {
+  color: #fca311;
+}
+
+.Add {
+  background-color: #fca311;
+  border: none;
+  color: black;
+  padding: 4px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 0 auto;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 4px;
 }
 
 label {
@@ -76,4 +86,40 @@ input textarea {
   border-radius: 5px;
   border: none;
   margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin-top: 20px;
+}
+
+form input {
+  flex: 1;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 12px;
+  background-color: #e5e5e5;
+  color: rgb(53, 53, 53);
+}
+
+form button {
+  border: none;
+  background-color: #fca311;
+  color: black;
+  border-radius: 5px;
+  padding: 10px 16px;
+  margin-left: 10px;
+}
+
+form button:hover {
+  background-color: #fca311;
+  cursor: pointer;
+}
+
+.buttonParam {
+  display: flex;
+  flex-direction: row;
 }

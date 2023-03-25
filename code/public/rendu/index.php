@@ -21,27 +21,36 @@ if(isset($_POST['username']) && !empty($_POST['username'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styleIndex.css">
     <title>Connexion</title>
 </head>
 <body>
-    <h1>Connexion</h1>
-    <form method="POST">
-        <div>
-            <input type="hidden" name="ninja" value="je suis un ninja"/>
+    <section>
+        <div class="form-box">
+            <div class="form-value">
+                <form method="POST">
+                    <h2>Connexion</h2>
+                    <div class="inputbox">
+                        <ion-icon name="person-outline"></ion-icon>
+                        <input type="text" name="username" required/>
+                        <label for="username">Username</label>
+                    </div>
+                    <div class="inputbox">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        <input type="password" name="password" required/>
+                        <label for="password">Password</label>
+                    </div>
+                    <button typ="submit">Connexion</button>
+                </form>
+            </div>
         </div>
-        <div>
-            <label for="username">Username</label>
-            <input type="text" name="username" />
-        </div>
-        <div>
-            <label for="password">Password</label>
-            <input type="password" name="password" />
-        </div>
-        <button typ="submit">Connexion</button>
-    </form>
+    </section>
+
     <?php if(isset($error) && !empty($error)) {
-        echo '<p>'.$error.'</p>';
+        echo '<p class="error">'.$error.'</p>';
     }
     ?>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
