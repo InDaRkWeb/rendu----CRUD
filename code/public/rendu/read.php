@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once 'fonction.ini.php';
 
 $connexion = connexion();
@@ -43,7 +43,6 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC)
             <th>Année</th>
             <th>Puissance en ch</th>
             <th>Couple en N.m</th>
-            <th>Type</th>
             <th>Poids en kg</th>
             <th></th>
         </thead>
@@ -56,11 +55,10 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC)
                     <td><?= $Voitures['Pays'] ?></td>
                     <td><?= $Voitures['Marque'] ?></td>
                     <td><?= $Voitures['Models'] ?></td>
-                    <td><?= $Voitures['Année'] ?></td>
-                    <td><?= $Voitures['Puissance_en_ch'] ?></td>
+                    <td><?= $Voitures['Annee'] ?></td>
+                    <td><?= $Voitures['Puissance'] ?></td>
                     <td><?= $Voitures['Couple'] ?></td>
-                    <td><?= $Voitures['Type'] ?></td>
-                    <td><?= $Voitures['Poids_en_kg'] ?></td>
+                    <td><?= $Voitures['Poids'] ?></td>
                     <td><a class="read" href="readMore.php?id=<?= $Voitures['id'] ?>">Voir</a>  <a class="Modif" href="update.php?id=<?= $Voitures['id'] ?>">Modifier</a>  <a class="Delete"href="delete.php?id=<?= $Voitures['id'] ?>">Supprimer</a></td>
                 </tr>
         <?php

@@ -1,5 +1,4 @@
 <?php 
-session_start();
 require_once 'fonction.ini.php';
 $connexion = connexion();
 
@@ -8,23 +7,20 @@ if(isset($_POST)){
         && isset($_POST['Pays']) && !empty($_POST['Pays'])
         && isset($_POST['Marque']) && !empty($_POST['Marque'])
         && isset($_POST['Models']) && !empty($_POST['Models'])
-        && isset($_POST['Année']) && !empty($_POST['Année'])
-        && isset($_POST['Puissance_en_ch']) && !empty($_POST['Puissance_en_ch'])
+        && isset($_POST['Annee']) && !empty($_POST['Annee'])
+        && isset($_POST['Puissance']) && !empty($_POST['Puissance'])
         && isset($_POST['Couple']) && !empty($_POST['Couple'])
-        && isset($_POST['Type']) && !empty($_POST['Type'])
-        && isset($_POST['Poids_en_kg']) && !empty($_POST['Poids_en_kg'])){
+        && isset($_POST['Poids']) && !empty($_POST['Poids'])){
         $id = $_GET['id'];
         $Pays = $_POST['Pays'];
         $Marque = $_POST['Marque'];
         $Modele = $_POST['Models'];
-        $Annee = $_POST['Année'];
-        $Puissance = $_POST['Puissance_en_ch'];
+        $Annee = $_POST['Annee'];
+        $Puissance = $_POST['Puissance'];
         $Couple = $_POST['Couple'];
-        $Type = $_POST['Type'];
-        $Poids = $_POST['Poids_en_kg'];
+        $Poids = $_POST['Poids'];
 
-
-        $sql = "UPDATE `Voitures` SET `Pays`=:Pays, `Marque`=:Marque, `Models`=:Modele, `Année`=:Annee, `Puissance_en_ch`=:Puissance, `Couple`=:Couple, `Type`=:Type, `Poids_en_kg`=:Poids WHERE `id`=:id;";
+        $sql = "UPDATE `Voitures` SET `Pays`=:Pays, `Marque`=:Marque, `Models`=:Modele, `Annee`=:Annee, `Puissance`=:Puissance, `Couple`=:Couple, `Poids`=:Poids WHERE `id`=:id;";
 
         $query = $connexion->prepare($sql);
 
@@ -34,7 +30,6 @@ if(isset($_POST)){
         $query->bindValue(':Annee', $Annee, PDO::PARAM_INT);
         $query->bindValue(':Puissance', $Puissance, PDO::PARAM_INT);
         $query->bindValue(':Couple', $Couple, PDO::PARAM_INT);
-        $query->bindValue(':Type', $Type, PDO::PARAM_STR);
         $query->bindValue(':Poids', $Poids, PDO::PARAM_INT);
         $query->bindValue(':id', $id, PDO::PARAM_INT);
 
@@ -69,36 +64,32 @@ $Voitures = $query->fetch();
 
     <form method="post" id="update_form">
         <p>
-            <label for="modele">Modèle</label>
-            <input type="text" name="modele" id="modele" value="<?= $Voitures['Pays'] ?>">
+            <label for="Pays">Pays</label>
+            <input type="text" name="Pays" id="Pays" value="<?= $Voitures['Pays'] ?>">
         </p>
         <p>
-            <label for="modele">Modèle</label>
-            <input type="text" name="modele" id="modele" value="<?= $Voitures['Marque'] ?>">
+            <label for="Marque">Marque</label>
+            <input type="text" name="Marque" id="Marque" value="<?= $Voitures['Marque'] ?>">
         </p>
         <p>
-            <label for="marque">Marque</label>
-            <input type="text" name="marque" id="marque" value="<?= $Voitures['Models'] ?>">
+            <label for="Models">Models</label>
+            <input type="text" name="Models" id="Models" value="<?= $Voitures['Models'] ?>">
         </p>
         <p>
-            <label for="annee">Année</label>
-            <input type="number" name="annee" id="annee" value="<?= $Voitures['Année'] ?>">
+            <label for="Annee">Année</label>
+            <input type="number" name="Annee" id="Annee" value="<?= $Voitures['Annee'] ?>">
         </p>
         <p>
-            <label for="puissance">Puissance</label>
-            <input type="number" name="puissance" id="puissance" value="<?= $Voitures['Puissance_en_ch'] ?>">
+            <label for="Puissance">Puissance en ch</label>
+            <input type="number" name="Puissance" id="Puissance" value="<?= $Voitures['Puissance'] ?>">
         </p>
         <p>
-            <label for="modele">Modèle</label>
-            <input type="text" name="modele" id="modele" value="<?= $Voitures['Couple'] ?>">
+            <label for="Couple">Couple</label>
+            <input type="text" name="Couple" id="Couple" value="<?= $Voitures['Couple'] ?>">
         </p>
         <p>
-            <label for="modele">Modèle</label>
-            <input type="text" name="modele" id="modele" value="<?= $Voitures['Type'] ?>">
-        </p>
-        <p>
-            <label for="modele">Modèle</label>
-            <input type="text" name="modele" id="modele" value="<?= $Voitures['Poids_en_kg'] ?>">
+            <label for="Poids">Poids en kg</label>
+            <input type="text" name="Poids" id="Poids" value="<?= $Voitures['Poids'] ?>">
         </p>
         <div class="buttonParam">     
            <p><a class="btn-retour" href="read.php">Retour</a></p>
